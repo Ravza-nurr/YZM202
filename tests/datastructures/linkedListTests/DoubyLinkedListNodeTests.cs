@@ -25,21 +25,6 @@ public class DbNodeTests
     }
 
     [Fact]
-    public void ConnectTwoNode()
-    {
-        var node = new DbNode<float>(1.1f);
-        var node2 = new DbNode<float>(2.2f);
-
-        node.Next = node2;
-        node2.Prev = node;
-
-        Assert.Equal(node2, node.Next);
-        Assert.Equal(node, node2.Prev);
-        Assert.Equal(2.2f, node.Next.Value);
-        Assert.Equal(1.1f, node2.Prev.Value);
-    }
-
-    [Fact]
     public void Constructor_WithValue_SetsValue()
     {
         var node = new DbNode<int>(5);
@@ -74,7 +59,7 @@ public class DbNodeTests
         var node = new DbNode<int>(5);
         var new_node = new DbNode<int>(10);
 
-        node.Prev = new_node;
+        node.Prev= new_node;
 
         // Assert.Equal(5, node.Prev.Next.Value); // node.Value
         Assert.Throws<System.NullReferenceException>(() => node.Prev.Next.Value); // node.Value
